@@ -4,13 +4,16 @@ import './CryptoList.css';
 
 function CryptoList (props) {
 
-    
+    let cryptoList = props.cryptoList;
+
+    console.log(cryptoList);
 
     return (
         <div className="list-of-rate">
             <ul>
                 <li>Last rate: <span>9999</span>  USD [$]</li>
                 <li>Last rate: <span>8374</span>  RUB [R$]</li>
+                
             </ul>
         </div>
     )
