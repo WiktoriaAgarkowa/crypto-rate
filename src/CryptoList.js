@@ -4,15 +4,17 @@ import './CryptoList.css';
 
 function CryptoList (props) {
 
-    let cryptoList = props.cryptoList;
+    let cryptoList = props.cryptoList.map((cryptoObject) => {
+
+    return(<li key={cryptoObject.currency}>Last rate: {cryptoObject.lastRate} {cryptoObject.currency} [{cryptoObject.symbol}]</li>)
+    })
 
     console.log(cryptoList);
 
     return (
         <div className="list-of-rate">
             <ul>
-                <li>Last rate: <span>9999</span>  USD [$]</li>
-                <li>Last rate: <span>8374</span>  RUB [R$]</li>
+                {cryptoList}
                 
             </ul>
         </div>
