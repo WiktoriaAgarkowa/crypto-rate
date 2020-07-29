@@ -28,9 +28,7 @@ class Crypto extends Component {
                     let newCryptoList = [];
 
                     for (const [ticker, cryptoRate] of Object.entries(tickers)) {
-                        // let lastCryptoObj = state.cryptoList.find((cryptoObj) => {
-                        //     return(cryptoObj.currency === ticker);
-                        // });
+                        
 
                         let newCryptoObj = {
                             currency: ticker,
@@ -43,7 +41,7 @@ class Crypto extends Component {
                         newCryptoList.push(newCryptoObj);
                     }
                     console.log(newCryptoList);
-                    
+
                     return ({
                         cryptoList: newCryptoList
                     })
