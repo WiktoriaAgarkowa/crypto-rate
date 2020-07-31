@@ -31,8 +31,8 @@ class Crypto extends Component {
 
                     for (const [ticker, cryptoRate] of Object.entries(tickers)) {
                         
-                        let lastCryptoObj = state.cryptoList.find((cryptoObj) => {
-                            return(cryptoObj.currency === ticker);
+                        let lastCryptoObj = state.cryptoList.find((cryptoObject) => {
+                            return(cryptoObject.currency === ticker);
                         });
 
                         let newCryptoObj = {
@@ -45,26 +45,29 @@ class Crypto extends Component {
                             
                         }
 
-                        // if(newCryptoObj !== undefined) {
+                        console.log(lastCryptoObj);
 
-                        //     if(newCryptoObj.lastRate > lastCryptoObj.lastRate) {
-                        //         newCryptoObj.class = 'green';
-                        //         newCryptoObj.arrow = String.fromCharCode(8593);
-                        //     } else if (newCryptoObj.lastRate < lastCryptoObj.lastRate){
-                        //         newCryptoObj.class = 'red';
-                        //         newCryptoObj.arrow = String.fromCharCode(8595);
-                        //     } else {
-                        //         newCryptoObj.class = 'blue';
-                        //         newCryptoObj.arrow = String.fromCharCode(8596);
-                        //     } 
-                        // } else {
-                        //     newCryptoObj.class = "blue";
-                        //     newCryptoObj.arrow = String.fromCharCode(8596);
-                        // }
+                        if(lastCryptoObj !== undefined) {
+
+                            if(newCryptoObj.lastRate > lastCryptoObj.lastRate) {
+                                newCryptoObj.class = 'green';
+                                newCryptoObj.arrow = String.fromCharCode(8593);
+                            } else if (newCryptoObj.lastRate < lastCryptoObj.lastRate){
+                                newCryptoObj.class = 'red';
+                                newCryptoObj.arrow = String.fromCharCode(8595);
+                            } else {
+                                newCryptoObj.class = 'blue';
+                                newCryptoObj.arrow = String.fromCharCode(8596);
+                            } 
+                        } else {
+                            newCryptoObj.class = "blue";
+                            newCryptoObj.arrow = String.fromCharCode(8596);
+                        }
 
                         newCryptoList.push(newCryptoObj);
                     }
-                    console.log(newCryptoList);
+                    
+                    
 
                     return ({
                         cryptoList: newCryptoList
@@ -72,7 +75,7 @@ class Crypto extends Component {
                     
                 });
                 
-                console.log(res.data)
+                
             })
 
     

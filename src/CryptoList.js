@@ -9,7 +9,7 @@ function CryptoList (props) {
     return(<li key={cryptoObject.currency}>Last rate: <span className ={`${cryptoObject.class}`}> {cryptoObject.lastRate} {cryptoObject.arrow}</span>  {cryptoObject.currency} [{cryptoObject.symbol}]</li>)
     })
 
-    console.log(cryptoList);
+    
 
     return (
         <div className="list-of-rate">
