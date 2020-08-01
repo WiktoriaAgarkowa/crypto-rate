@@ -10,8 +10,9 @@ class Crypto extends Component {
 
         this.state = {
             cryptoList: [],
+            filterList: [],
 
-        }
+        };
     }
 
     componentDidMount() {
@@ -45,7 +46,6 @@ class Crypto extends Component {
                             
                         }
 
-                        console.log(lastCryptoObj);
 
                         if(lastCryptoObj !== undefined) {
 
@@ -75,19 +75,34 @@ class Crypto extends Component {
                     
                 });
                 
-                
-            })
+                this.filterRateList();
+            });
 
     
+    }
+
+    filterRateList = () => {
+        this._inputFilter.value = this._inputFilter.value.trim().toUpperCase();
+
+        this.setState((state) => {
+            let newFilteredCryptoList = state.cryptoList.filter((cryptoObject) => {
+                return(cryptoObject.currency.includes(this._inputFilter.value));
+            });
+
+            return({
+                filterList: newFilteredCryptoList
+            });
+        });
+        
     }
 
     render() {
 
         return (
             <div>
-                <input type="text" placeholder="Filter"></input>
+                <input ref={element => this._inputFilter = element} onChange={this.filterRateList} type="text" placeholder="Filter"></input>
             
-                <CryptoList cryptoList={this.state.cryptoList}/>
+                <CryptoList cryptoList={this.state.filterList}/>
                 
             </div>
         );
